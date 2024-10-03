@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settyl Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Settyl's Product Store</h1>
+    </header>
+
+    <main>
+        <div class="product-grid">
+            <!-- Product list -->
+            <div class="product" data-id="1">
+                <h2>Product 1</h2>
+                <p>Price: $100</p>
+                <button class="buy-btn">Buy</button>
+            </div>
+            <div class="product" data-id="2">
+                <h2>Product 2</h2>
+                <p>Price: $120</p>
+                <button class="buy-btn">Buy</button>
+            </div>
+            <div class="product" data-id="3">
+                <h2>Product 3</h2>
+                <p>Price: $80</p>
+                <button class="buy-btn">Buy</button>
+            </div>
+            <!-- Add more products up to 10 -->
+        </div>
+    </main>
+
+    <!-- Chatbot modal -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="chat-box">
+                <div id="chat-content"></div>
+                <input type="text" id="user-input" placeholder="Enter your price offer..." />
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

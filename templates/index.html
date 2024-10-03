@@ -1,0 +1,66 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Settyl | Home</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1 class="company-name">Settyl</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-text">
+                <h2>Welcome to Settyl</h2>
+                <p>Innovative solutions for your business needs. Explore our products and let us help you grow.</p>
+            </div>
+
+            <!-- Product Cards Section -->
+            <div class="product-card">
+                <h3>Product A</h3>
+                <p>$100</p>
+                <button onclick="startNegotiation('Product A', 100)">Buy Product</button>
+            </div>
+            <div class="product-card">
+                <h3>Product B</h3>
+                <p>$150</p>
+                <button onclick="startNegotiation('Product B', 150)">Buy Product</button>
+            </div>
+            <div class="product-card">
+                <h3>Product C</h3>
+                <p>$200</p>
+                <button onclick="startNegotiation('Product C', 200)">Buy Product</button>
+            </div>
+            <div class="product-card">
+                <h3>Product D</h3>
+                <p>$250</p>
+                <button onclick="startNegotiation('Product D', 250)">Buy Product</button>
+            </div>
+        </section>
+
+        <section class="chatbox">
+            <h2>Negotiation Chat</h2>
+            <div id="messages" style="border: 1px solid #ccc; height: 200px; overflow-y: scroll;"></div>
+            <input type="text" id="userInput" placeholder="Enter your message">
+            <button id="sendBtn">Send</button>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Settyl. All rights reserved.</p>
+        </footer>
+
+        <script src="/static/js/script.js"></script>
+    </body>
+    </html>
