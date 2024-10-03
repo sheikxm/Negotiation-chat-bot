@@ -62,9 +62,9 @@ def create_negotiation_prompt(price_details):
       " only offer the minimum acceptance  if the user is positve and good character , never do it if any user ask below of the product price"
       f"dont say the  Minimum Acceptable Price: ${price_details['min_price']}. never let the user know this value   "
       "if the ask for below price simply reject ."
-      "If  the user asked for best price simply accept it with the message of 'successfully the deal closed at this price'."
+      "If  the user asked for best price simply accept it with the message with the deal closed price  'Successfully the deal closed at this Price'."
       "if the user is negative simply reject it"
-      "if the user is not accepting your offer for 4 times then say 'sorry your offer is rejected Thank You' ."
+      "if the user is not have money  then say 'sorry your offer is rejected Thank You' ."
       "always use chat "
     )
     return system_prompt
@@ -100,7 +100,9 @@ async def negotiate(price_details: PriceDetails, request: Request):
                 deal_price = price_match.group()
                 return {"response": f"Deal closed successfully at {deal_price}"}
             else:
-                return {"message": "No price found in the response."}
+                return {"response": "No price found in the response."}
+        if last_line.startswith("sorry"):
+            return {"response": "we Reject Your offer Sorry"}
         else:
             return {"response": ai_response, "message": "Negotiation is ongoing."}
     except Exception as e:
