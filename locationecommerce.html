@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        .product {
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Products</h1>
+
+<div class="product" data-product-id="101">
+    <h2>Product 1</h2>
+    <button class="buy-btn">Buy Now</button>
+</div>
+
+<div class="product" data-product-id="102">
+    <h2>Product 2</h2>
+    <button class="buy-btn">Buy Now</button>
+</div>
+
+<p id="status"></p>
+
+<script>
+    document.querySelectorAll('.buy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.closest('.product').getAttribute('data-product-id');
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        sendLocationToServer(productId, latitude, longitude);
+                    },
+                    (error) => {
+                        document.getElementById('status').textContent = "Unable to retrieve location.";
+                    }
+                );
+            } else {
+                document.getElementById('status').textContent = "Geolocation is not supported by this browser.";
+            }
+        });
+    });
+
+    function sendLocationToServer(productId, latitude, longitude) {
+        const data = {
+            product_id: productId,
+            latitude: latitude,
+            longitude: longitude
+        };
+
+        fetch('https://example.com/receive-location', {  // Replace this URL with your destination site
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('status').textContent = `Location sent for Product ID: ${productId}`;
+        })
+        .catch((error) => {
+            document.getElementById('status').textContent = "Error sending location.";
+        });
+    }
+</script>
+
+</body>
+</html>
